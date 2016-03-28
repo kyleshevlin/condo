@@ -1,0 +1,108 @@
+//////////////////////////////
+// Condo Functions
+//////////////////////////////
+
+///
+/// @access private
+/// @param $gutters {Integer} Number of gutter widths to return
+/// @return {Map} Map with margin before and after values
+///
+@function gutter-math($gutters) {
+  $margin-before: null;
+  $margin-after: null;
+
+  @return (
+    margin-before: $margin-before,
+    margin-after: $margin-after
+  );
+}
+
+///
+/// @access private
+/// @return {Percentage} Width equivalent with gutters requested
+///
+@function gutter-width($gutters, $gutter-ratio) {
+  @if $gutters == 0 {
+    @return 0;
+  } @else {
+    @return 100 / $gutters * $gutter-ratio * 1%;
+  }
+}
+
+///
+/// @access public
+/// @param $gutters {Integer} [1] Number of gutter widths to return
+/// @return {Percentage} Width equivalent to number of gutters requested
+///
+@function gutters($gutters: 1) {
+  $gutter-ratio: map-get($condo, gutters);
+  $gutter-width: gutter-width(map-get($columns), $gutter-ratio);
+
+  @return $gutter-width * $gutters;
+}
+
+///
+/// @access private
+/// @param $columns {Number} Number of columns in grid
+/// @param $gutter-width {Percentage} Width of one gutter
+/// @return {Percentage} Width equivalent with columns requested
+///
+@function raw-column-width($columns, $gutter-width) {
+  $gutter-position: map-get($condo, gutter-position);
+
+  @if $gutter-position == 'split' {
+    @return 100% / $columns;
+  } @else {
+    @return (100% + $gutter-width) / $columns;
+  }
+}
+
+///
+/// @access private
+/// @param $columns {Integer} Number of column widths to return
+/// @return {Map} Map with width and margin values
+///
+@function span-math($spans) {
+  $columns: map-get($condo, columns);
+  $gutters: $columns;
+  $gutter-position: map-get($condo, gutter-position);
+  $gutter-ratio: map-get($condo, gutters);
+  $gutter-width: gutter-width($gutters, $gutter-ratio);
+  $raw-column-width: raw-column-width($columns, $gutter-width);
+  $column-width: $raw-column-width - $gutter-width;
+  $width: null;
+  $margin-before: null;
+  $margin-after: null;
+
+  $width: ($raw-column-width * ($spans - 1)) + $column-width;
+  $margin-after: $gutter-width;
+
+  @if $gutter-position == 'split' {
+    $margin-before: $gutter-width / 2;
+    $margin-after: $margin-before;
+  }
+
+  @return (
+    width: $width,
+    margin-before: $margin-before,
+    margin-after: $margin-after
+  );
+}
+
+///
+/// @access public
+/// @param $spans {Integer} Number of column widths to return
+/// @return {Percentage} Width equivalent to number of columns requested
+///
+@function span($spans: 1, $keyword: null) {
+  $columns: map-get($condo, columns);
+  $gutters: $columns;
+  $gutter-position: map-get($condo, gutter-position);
+  $gutter-ratio: map-get($condo, gutters);
+  $gutter-width: gutter-width($gutters, $gutter-ratio);
+  $raw-column-width: raw-column-width($columns, $gutter-width);
+  $column-width: $raw-column-width - $gutter-width;
+  $width: ($raw-column-width * ($spans - 1)) + $column-width;
+
+  @return $width;
+}

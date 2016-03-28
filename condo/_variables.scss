@@ -1,0 +1,18 @@
+//////////////////////////////
+// Condo Variables
+//////////////////////////////
+
+/// Default settings
+$condo-defaults: (
+  container: auto,
+  container-position: center,
+  columns: 4,
+  gutters: .25,
+  gutter-position: after
+);
+
+// Empty $condo map in case one is not supplied by the user
+$condo: () !default;
+
+// Merge defaults with $condo to create new $condo map
+$condo: map-merge($condo-defaults, $condo);

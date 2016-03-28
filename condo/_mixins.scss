@@ -1,0 +1,98 @@
+//////////////////////////////
+// Condo Mixins
+//////////////////////////////
+
+///
+/// @access public
+/// @param $max-width
+/// @param $position
+/// @output Sets a max-width and margin-left and margin-right to auto if container position is center
+///
+@mixin container($max-width) {
+  $container-position: map-get($condo, container-position);
+
+  max-width: $max-width;
+
+  @if $container-position == center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+///
+/// @access public
+/// @output Sets opposite float and removes margin right
+///
+@mixin last {
+  $gutter-position: map-get($condo, gutter-position);
+
+  @if $gutter-position != 'split' {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+///
+/// @access public
+/// @output Resets both float and margin-right to non-last position values
+///
+@mixin unlast {
+  $map: span-math(map-get($condo, columns));
+  $margin-after: map-get($map, margin-after);
+
+  float: left;
+  margin-right: $margin-after;
+}
+
+///
+/// @access public
+/// @param $columns {Integer} Number of columns to push block over
+/// @output Sets margin-left so such a size as to "push" it the width of the columns specified
+///
+@mixin push($columns) {
+  $gutter-position: map-get($condo, gutter-position);
+  $map: span-math($columns);
+  $width: map-get($map, width);
+  $margin-before: map-get($map, margin-before);
+  $margin-after: map-get($map, margin-after);
+
+  @if $gutter-position == 'split' {
+    margin-left: ($margin-before * 2) + $width + $margin-after;
+  } @else {
+    margin-left: $width + $margin-after;
+  }
+}
+
+///
+/// @access public
+/// @param $spans {Integer} - Number of columns width should span
+/// @param $keyword - Optional key words: wide, wider will add 1 or 2 gutters respectively to width
+/// @output Sets float, width, and appropriate margins
+///
+@mixin span($spans, $keyword: null) {
+  $gutter-position: map-get($condo, gutter-position);
+  $span-map: span-math($spans);
+
+  float: left;
+  width: map-get($span-map, width);
+
+  @if $gutter-position == 'split' {
+    margin-left: map-get($span-map, margin-before);
+    margin-right: map-get($span-map, margin-after);
+  } @else {
+    margin-right: map-get($span-map, margin-after);
+  }
+}
+
+///
+/// @access public
+/// @param $map
+///
+@mixin with-layout($map) {
+  $old: $condo;
+  $condo: $map !global;
+
+  @content;
+
+  $condo: $old !global;
+}
