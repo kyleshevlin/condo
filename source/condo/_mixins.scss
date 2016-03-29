@@ -73,6 +73,8 @@
 @mixin span($spans, $keyword: null) {
   $gutter-position: map-get($condo, gutter-position);
   $span-map: span-math($spans);
+  $width: map-get($span-map, width);
+  $gutter-width: gutter-width(map-get($condo, columns), map-get($condo, gutters));
 
   @if $keyword == wide {
     $width: $width + $gutter-width;
@@ -81,7 +83,7 @@
   }
 
   float: left;
-  width: map-get($span-map, width);
+  width: $width;
 
   @if $gutter-position == 'split' {
     margin-left: map-get($span-map, margin-before);
