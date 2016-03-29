@@ -1,6 +1,6 @@
 # Condo
 
-Because you don't always need a mansion-sized Sass grid library.
+*Because you don't always need a mansion-sized Sass grid library.*
 
 With no offense intended towards the incredible, robust and flexible [Susy](https://github.com/oddbird/susy) (I personally love it), I bring you Condo, a tiny Sass grid library.
 
