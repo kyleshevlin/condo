@@ -1,8 +1,12 @@
-//////////////////////////////
-// Condo Variables
-//////////////////////////////
-
-/// Default settings
+///
+/// Default $condo settings
+/// @prop $condo-defaults
+/// @prop {String} $condo-defaults.container [auto] Can be any valid width value
+/// @prop {String} $condo-defaults.container-position [center] Options: left, center, right; Determines the position of the container.
+/// @prop {Number} $condo-defaults.columns [4] Number of columns to used for grid settings
+/// @prop {Float} $condo-defaults.gutters [.25] Percentage of a column that the width of a gutter will be
+/// @prop {String} $condo-defaults.gutter-position [after] Options: after, split; Determines width and position of gutters.
+///
 $condo-defaults: (
   container: auto,
   container-position: center,

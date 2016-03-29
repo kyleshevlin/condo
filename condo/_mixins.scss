@@ -1,25 +1,36 @@
-//////////////////////////////
-// Condo Mixins
-//////////////////////////////
-
 ///
+/// Set the max-width and margins for a container
 /// @access public
-/// @param $max-width
-/// @param $position
-/// @output Sets a max-width and margin-left and margin-right to auto if container position is center
+/// @param {Number} $max-width Any valid width value
+/// @param {String} $position [null] Options: left, center, right; will set margins accordingly.
+/// @output Sets a max-width, margin-left and margin-right to auto if container position is center, and clearfixes the container so you don't have to
 ///
-@mixin container($max-width) {
+@mixin container($max-width, $position: null) {
   $container-position: map-get($condo, container-position);
+
+  @if $position != null {
+    $container-position: $position;
+  }
 
   max-width: $max-width;
 
   @if $container-position == center {
     margin-left: auto;
     margin-right: auto;
+  } @else if $container-position == right {
+    margin-left: auto;
+  }
+
+  // Clearfix
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
   }
 }
 
 ///
+/// Use to set float to right and remove right margin.
 /// @access public
 /// @output Sets opposite float and removes margin right
 ///
@@ -33,20 +44,9 @@
 }
 
 ///
+/// Increase margin-left in order to "push" block over a supplied number of spans.
 /// @access public
-/// @output Resets both float and margin-right to non-last position values
-///
-@mixin unlast {
-  $map: span-math(map-get($condo, columns));
-  $margin-after: map-get($map, margin-after);
-
-  float: left;
-  margin-right: $margin-after;
-}
-
-///
-/// @access public
-/// @param $columns {Integer} Number of columns to push block over
+/// @param {Integer} $columns Number of columns to push block over
 /// @output Sets margin-left so such a size as to "push" it the width of the columns specified
 ///
 @mixin push($columns) {
@@ -64,14 +64,21 @@
 }
 
 ///
+/// Set the float, width and margins for a block
 /// @access public
-/// @param $spans {Integer} - Number of columns width should span
-/// @param $keyword - Optional key words: wide, wider will add 1 or 2 gutters respectively to width
+/// @param {Integer} $spans Number of columns width should span
+/// @param {String} $keyword [null] Options are: wide, wider; Will add the width of one or two gutters respectively.
 /// @output Sets float, width, and appropriate margins
 ///
 @mixin span($spans, $keyword: null) {
   $gutter-position: map-get($condo, gutter-position);
   $span-map: span-math($spans);
+
+  @if $keyword == wide {
+    $width: $width + $gutter-width;
+  } @else if $keyword == wider {
+    $width: $width + ($gutter-width * 2);
+  }
 
   float: left;
   width: map-get($span-map, width);
@@ -85,12 +92,27 @@
 }
 
 ///
+/// Use to reset settings after using the last mixin.
 /// @access public
-/// @param $map
+/// @output Resets both float and margin-right to non-last position values
+///
+@mixin unlast {
+  $map: span-math(map-get($condo, columns));
+  $margin-after: map-get($map, margin-after);
+
+  float: left;
+  margin-right: $margin-after;
+}
+
+///
+/// Temporarily use a different settings map
+/// @access public
+/// @param {Map} $map A map consisting of some or all $condo settings.
+/// @content [Merges the $map with the $condo settings and uses this new map to do all Condo math within this content block. Restores the $condo settings after the block.]
 ///
 @mixin with-layout($map) {
   $old: $condo;
-  $condo: $map !global;
+  $condo: map-merge($old, $map) !global;
 
   @content;
 

@@ -1,0 +1,23 @@
+{
+  "title": "Condo",
+  "name": "condo",
+  "version": "1.0.0",
+  "description": "A tiny, Sass grid library.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kyleshevlin/Condo.git"
+  },
+  "keywords": [
+    "micro",
+    "tiny",
+    "grids",
+    "Sass",
+    "SCSS"
+  ],
+  "author": "Kyle Shevlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kyleshevlin/Condo/issues"
+  },
+  "homepage": "https://github.com/kyleshevlin/Condo#readme"
+}

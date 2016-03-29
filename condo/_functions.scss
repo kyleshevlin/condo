@@ -1,23 +1,5 @@
-//////////////////////////////
-// Condo Functions
-//////////////////////////////
-
 ///
-/// @access private
-/// @param $gutters {Integer} Number of gutter widths to return
-/// @return {Map} Map with margin before and after values
-///
-@function gutter-math($gutters) {
-  $margin-before: null;
-  $margin-after: null;
-
-  @return (
-    margin-before: $margin-before,
-    margin-after: $margin-after
-  );
-}
-
-///
+/// Return the gutter width for the current settings
 /// @access private
 /// @return {Percentage} Width equivalent with gutters requested
 ///
@@ -30,6 +12,7 @@
 }
 
 ///
+/// Use when a width equivalent to a gutter or multiple gutters is needed
 /// @access public
 /// @param $gutters {Integer} [1] Number of gutter widths to return
 /// @return {Percentage} Width equivalent to number of gutters requested
@@ -42,6 +25,7 @@
 }
 
 ///
+/// Return a column width measured as if there were no gutters
 /// @access private
 /// @param $columns {Number} Number of columns in grid
 /// @param $gutter-width {Percentage} Width of one gutter
@@ -58,6 +42,7 @@
 }
 
 ///
+/// Return the width and margins given the current settings
 /// @access private
 /// @param $columns {Integer} Number of column widths to return
 /// @return {Map} Map with width and margin values
@@ -90,6 +75,7 @@
 }
 
 ///
+/// Use when a width equivalent to the spans and keywords provided is needed
 /// @access public
 /// @param $spans {Integer} Number of column widths to return
 /// @return {Percentage} Width equivalent to number of columns requested
@@ -103,6 +89,12 @@
   $raw-column-width: raw-column-width($columns, $gutter-width);
   $column-width: $raw-column-width - $gutter-width;
   $width: ($raw-column-width * ($spans - 1)) + $column-width;
+
+  @if $keyword == wide {
+    $width: $width + $gutter-width;
+  } @else if $keyword == wider {
+    $width: $width + ($gutter-width * 2);
+  }
 
   @return $width;
 }
