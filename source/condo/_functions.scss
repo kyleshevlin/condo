@@ -1,6 +1,8 @@
 ///
 /// Return the gutter width for the current settings
 /// @access private
+/// @param {Integer} $gutters Number of gutters in grid, equivalent to number of columns generally
+/// @param {Float} $gutter-ratio Floating number representing the width of a gutter compared to the width of a column
 /// @return {Percentage} Width equivalent with gutters requested
 ///
 @function gutter-width($gutters, $gutter-ratio) {
@@ -14,7 +16,7 @@
 ///
 /// Use when a width equivalent to a gutter or multiple gutters is needed
 /// @access public
-/// @param $gutters {Integer} [1] Number of gutter widths to return
+/// @param {Integer} $gutters [1] Number of gutter widths to return
 /// @return {Percentage} Width equivalent to number of gutters requested
 ///
 @function gutters($gutters: 1) {
@@ -27,8 +29,8 @@
 ///
 /// Return a column width measured as if there were no gutters
 /// @access private
-/// @param $columns {Number} Number of columns in grid
-/// @param $gutter-width {Percentage} Width of one gutter
+/// @param {Integer} $columns Number of columns in grid
+/// @param {Percentage} $gutter-width Width of one gutter
 /// @return {Percentage} Width equivalent with columns requested
 ///
 @function raw-column-width($columns, $gutter-width) {
@@ -44,7 +46,7 @@
 ///
 /// Return the width and margins given the current settings
 /// @access private
-/// @param $columns {Integer} Number of column widths to return
+/// @param {Integer} $spans Number of column widths to return
 /// @return {Map} Map with width and margin values
 ///
 @function span-math($spans) {
@@ -77,7 +79,8 @@
 ///
 /// Use when a width equivalent to the spans and keywords provided is needed
 /// @access public
-/// @param $spans {Integer} Number of column widths to return
+/// @param {Integer} $spans [1] Number of column widths to return
+/// @param {String} $keyword [null] Options: wide, wider; Increases width by 1 or 2 gutter-widths respectively
 /// @return {Percentage} Width equivalent to number of columns requested
 ///
 @function span($spans: 1, $keyword: null) {
