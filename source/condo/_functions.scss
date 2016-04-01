@@ -31,7 +31,7 @@
 /// Sets up the current layout, ensuring all $condo keys are mapped and have values
 /// @access public
 /// @param {Map} $map [$condo] Map to be merged into $condo-defaults
-/// @return {Map} Result of merging the supplied $map with #condo-defaults
+/// @return {Map} Result of merging the supplied $map with $condo-defaults
 ///
 @function layout($map: $condo) {
   @return map-merge($condo-defaults, $map);
