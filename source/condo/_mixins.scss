@@ -6,9 +6,10 @@
 /// @output Sets a max-width, margin-left and margin-right to auto if container position is center, and clearfixes the container so you don't have to
 ///
 @mixin container($max-width, $position: null) {
-  $container-position: map-get($condo, container-position);
+  $layout: layout();
+  $container-position: map-get($layout, container-position);
 
-  @if $position != null {
+  @if $position {
     $container-position: $position;
   }
 
@@ -17,8 +18,12 @@
   @if $container-position == center {
     margin-left: auto;
     margin-right: auto;
+  } @else if $container-position == left {
+    margin-left: 0;
+    margin-right: auto;
   } @else if $container-position == right {
     margin-left: auto;
+    margin-right: 0;
   }
 
   // Clearfix
@@ -35,7 +40,8 @@
 /// @output Sets opposite float and removes margin right
 ///
 @mixin last {
-  $gutter-position: map-get($condo, gutter-position);
+  $layout: layout();
+  $gutter-position: map-get($layout, gutter-position);
 
   @if $gutter-position != 'split' {
     float: right;
@@ -50,7 +56,8 @@
 /// @output Sets margin-left so such a size as to "push" it the width of the columns specified
 ///
 @mixin push($columns) {
-  $gutter-position: map-get($condo, gutter-position);
+  $layout: layout();
+  $gutter-position: map-get($layout, gutter-position);
   $map: span-math($columns);
   $width: map-get($map, width);
   $margin-before: map-get($map, margin-before);
@@ -71,10 +78,11 @@
 /// @output Sets float, width, and appropriate margins
 ///
 @mixin span($spans, $keyword: null) {
-  $gutter-position: map-get($condo, gutter-position);
+  $layout: layout();
+  $gutter-position: map-get($layout, gutter-position);
   $span-map: span-math($spans);
   $width: map-get($span-map, width);
-  $gutter-width: gutter-width(map-get($condo, columns), map-get($condo, gutters));
+  $gutter-width: gutter-width(map-get($layout, columns), map-get($layout, gutters));
 
   @if $keyword == wide {
     $width: $width + $gutter-width;
@@ -99,7 +107,8 @@
 /// @output Resets both float and margin-right to non-last position values
 ///
 @mixin unlast {
-  $map: span-math(map-get($condo, columns));
+  $layout: layout();
+  $map: span-math(map-get($layout, columns));
   $margin-after: map-get($map, margin-after);
 
   float: left;
@@ -113,7 +122,8 @@
 /// @content [Merges the $map with the $condo settings and uses this new map to do all Condo math within this content block. Restores the $condo settings after the block.]
 ///
 @mixin with-layout($map) {
-  $old: $condo;
+  $layout: layout();
+  $old: $layout;
   $condo: map-merge($old, $map) !global;
 
   @content;

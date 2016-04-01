@@ -20,10 +20,21 @@
 /// @return {Percentage} Width equivalent to number of gutters requested
 ///
 @function gutters($gutters: 1) {
-  $gutter-ratio: map-get($condo, gutters);
+  $layout: layout();
+  $gutter-ratio: map-get($layout, gutters);
   $gutter-width: gutter-width(map-get($columns), $gutter-ratio);
 
   @return $gutter-width * $gutters;
+}
+
+///
+/// Sets up the current layout, ensuring all $condo keys are mapped and have values
+/// @access public
+/// @param {Map} $map [$condo] Map to be merged into $condo-defaults
+/// @return {Map} Result of merging the supplied $map with #condo-defaults
+///
+@function layout($map: $condo) {
+  @return map-merge($condo-defaults, $map);
 }
 
 ///
@@ -34,7 +45,8 @@
 /// @return {Percentage} Width equivalent with columns requested
 ///
 @function raw-column-width($columns, $gutter-width) {
-  $gutter-position: map-get($condo, gutter-position);
+  $layout: layout();
+  $gutter-position: map-get($layout, gutter-position);
 
   @if $gutter-position == 'split' {
     @return 100% / $columns;
@@ -50,10 +62,11 @@
 /// @return {Map} Map with width and margin values
 ///
 @function span-math($spans) {
-  $columns: map-get($condo, columns);
+  $layout: layout();
+  $columns: map-get($layout, columns);
   $gutters: $columns;
-  $gutter-position: map-get($condo, gutter-position);
-  $gutter-ratio: map-get($condo, gutters);
+  $gutter-position: map-get($layout, gutter-position);
+  $gutter-ratio: map-get($layout, gutters);
   $gutter-width: gutter-width($gutters, $gutter-ratio);
   $raw-column-width: raw-column-width($columns, $gutter-width);
   $column-width: $raw-column-width - $gutter-width;
@@ -84,10 +97,11 @@
 /// @return {Percentage} Width equivalent to number of columns requested
 ///
 @function span($spans: 1, $keyword: null) {
-  $columns: map-get($condo, columns);
+  $layout: layout();
+  $columns: map-get($layout, columns);
   $gutters: $columns;
-  $gutter-position: map-get($condo, gutter-position);
-  $gutter-ratio: map-get($condo, gutters);
+  $gutter-position: map-get($layout, gutter-position);
+  $gutter-ratio: map-get($layout, gutters);
   $gutter-width: gutter-width($gutters, $gutter-ratio);
   $raw-column-width: raw-column-width($columns, $gutter-width);
   $column-width: $raw-column-width - $gutter-width;
