@@ -22,7 +22,7 @@
 @function gutters($gutters: 1) {
   $layout: layout();
   $gutter-ratio: map-get($layout, gutters);
-  $gutter-width: gutter-width(map-get($columns), $gutter-ratio);
+  $gutter-width: gutter-width(map-get($layout, columns), $gutter-ratio);
 
   @return $gutter-width * $gutters;
 }
