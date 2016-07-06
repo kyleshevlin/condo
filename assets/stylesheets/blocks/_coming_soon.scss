@@ -1,0 +1,15 @@
+//////////////////////////////
+// Coming Soon
+//////////////////////////////
+
+.coming_soon {
+  color: $c-brand;
+  font-size: 35px;
+  line-height: 1.2;
+  text-align: center;
+  padding: bs(4) 0;
+
+  @include bp(alpha) {
+    font-size: 50px;
+  }
+}

@@ -1,0 +1,180 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Droid Serif", serif;
+  font-size: 100%;
+}
+@media (min-width: 1350px) {
+  html {
+    font-size: 115%;
+  }
+}
+
+body {
+  background: #f7f7f7;
+  color: #0a0200;
+}
+
+a {
+  color: #33a1cc;
+  text-decoration: none;
+  position: relative;
+  transition: color .3s ease;
+}
+a:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #33a1cc;
+  transition: width .3s ease, background .3s ease;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+a:hover {
+  color: #2f94bc;
+}
+a:hover:after {
+  width: 100%;
+  background: #2f94bc;
+}
+.footer a {
+  color: #5cb4d6;
+}
+.footer a:hover {
+  color: #2f94bc;
+}
+
+section {
+  max-width: 42rem;
+  margin-bottom: 2.88rem;
+}
+@media (min-width: 1025px) {
+  section {
+    margin-bottom: 4.32rem;
+  }
+}
+
+svg {
+  font-size: .75rem;
+}
+
+ol,
+ul {
+  font-size: 100%;
+  line-height: 1.8;
+  margin-bottom: 1.44rem;
+}
+
+ul {
+  list-style: disc;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2.7rem;
+  margin-bottom: 1.44rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.44rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.44rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.44rem;
+}
+
+h5 {
+  font-size: 1.15rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.44rem;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.44rem;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+p,
+ol,
+ul,
+pre {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.44rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Catamaran", sans-serif;
+}
+
+.header {
+  padding: 2.88rem 0;
+}
+.header-heading {
+  margin-bottom: 0;
+}
+
+.footer {
+  background: #2b2b2b;
+  color: #f7f7f7;
+  padding: 2.88rem 0;
+}
+.footer section {
+  margin-bottom: 0;
+}
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+@media (min-width: 1025px) {
+  .container {
+    width: 75%;
+  }
+}
+
+.coming_soon {
+  color: #33a1cc;
+  font-size: 35px;
+  line-height: 1.2;
+  text-align: center;
+  padding: 5.76rem 0;
+}
+@media (min-width: 600px) {
+  .coming_soon {
+    font-size: 50px;
+  }
+}
+
+/*# sourceMappingURL=application.css.map */
