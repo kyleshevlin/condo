@@ -30,5 +30,5 @@ gem 'condo_grids'
 
 ## Documentation
 
-I will write up the full documentation here soon. For now, open the documentation found in the `docs/` directory. Thanks [Sassdoc](http://sassdoc.com/)!
+I will write up the full documentation here soon. For now, you can read them at [Condo's Github page here](http://kyleshevlin.github.io/condo/docs). Thanks to [Sassdoc](http://sassdoc.com/) for the automatic documentation generator.
 
