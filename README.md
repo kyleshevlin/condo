@@ -12,7 +12,23 @@ For example, Condo does *not* support right to left layouts, only left to right 
 
 You'll find other, similar restrictions throughout the documentation.
 
+## Installation
+
+Condo is available as a Bower package and a Ruby gem.
+
+Bower:
+
+```
+$ bower install condo
+```
+
+Ruby Gem: *Sorry, I couldn't get the same name for the gem*
+
+```ruby
+gem 'condo_grids'
+```
+
 ## Documentation
 
-Open the documentation found in the `docs/` directory. Thanks [Sassdoc](http://sassdoc.com/)!
+I will write up the full documentation here soon. For now, open the documentation found in the `docs/` directory. Thanks [Sassdoc](http://sassdoc.com/)!
 
