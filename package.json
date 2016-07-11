@@ -1,8 +1,8 @@
 {
   "title": "Condo",
   "name": "condo",
-  "version": "1.0.1",
-  "description": "A tiny, Sass grid library.",
+  "version": "1.0.2",
+  "description": "A tiny Sass grid library.",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/kyleshevlin/condo.git"
