@@ -1,7 +1,7 @@
 {
   "name": "Condo Demo",
-  "version": "1.0.0",
-  "description": "Condo: because you don't always need a mansion-sized grid library",
+  "version": "1.0.2",
+  "description": "A tiny Sass grid library",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
