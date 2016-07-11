@@ -1,0 +1,33 @@
+{
+  "name": "condo",
+  "description": "A tiny, Sass grid library.",
+  "main": "core/_condo.scss",
+  "authors": [
+    "Kyle Shevlin"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "micro",
+    "tiny",
+    "grids",
+    "Sass",
+    "SCSS"
+  ],
+  "homepage": "https://github.com/kyleshevlin/condo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "bin"
+    "docs",
+    "lib",
+    "**/*.gem",
+    "Gemfile",
+    "**/*.txt",
+    "**/*.md",
+    "Rakefile",
+    "package.json"
+  ]
+}
