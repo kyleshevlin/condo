@@ -1,0 +1,7 @@
+{
+  "name": "Condo",
+  "description": "A tiny Sass grid library",
+  "tags": ["grids", "responsive", "micro", "tiny"],
+  "website": "http://kyleshevlin.github.io/condo/",
+  "docs": "http://kyleshevlin.github.io/condo/docs"
+}

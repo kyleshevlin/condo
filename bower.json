@@ -28,6 +28,7 @@
     "**/*.txt",
     "**/*.md",
     "Rakefile",
-    "package.json"
+    "package.json",
+    "sache.json"
   ]
 }
