@@ -1,0 +1,40 @@
+//////////////////////////////
+// Example 1
+//////////////////////////////
+
+.example_1 {
+  @include clearfix;
+  background: $c-light-blue;
+  color: $c-dark-brand;
+
+  &-article,
+  &-aside {
+    background: $c-white;
+    padding: bs();
+    margin-bottom: bs();
+  }
+
+  &-article {
+
+    @include bp(alpha) {
+      @include span(2);
+    }
+
+    @include bp(bravo) {
+      @include span(3);
+    }
+  }
+
+  &-aside {
+
+    @include bp(alpha) {
+      @include span(2);
+      @include last;
+    }
+
+    @include bp(bravo) {
+      @include span(1);
+      @include last;
+    }
+  }
+}

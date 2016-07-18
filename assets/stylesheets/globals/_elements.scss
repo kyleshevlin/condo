@@ -61,11 +61,10 @@ a {
 }
 
 section {
-  max-width: 42rem; // For line length
-  margin-bottom: bs(2);
+  padding: bs(2) 0;
 
   @include bp(bravo) {
-    margin-bottom: bs(3);
+    padding: bs(3) 0;
   }
 }
 
@@ -77,9 +76,14 @@ ol,
 ul {
   font-size: 100%;
   line-height: 1.8;
+  padding: 0 bs(2);
   margin-bottom: bs();
 }
 
 ul {
   list-style: disc;
+}
+
+ol {
+  list-style: decimal;
 }

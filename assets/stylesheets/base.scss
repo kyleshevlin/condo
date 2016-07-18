@@ -21,12 +21,14 @@
 @import
   'sections/header',
   'sections/footer',
-  'sections/container'
+  'sections/container',
+  'sections/example_1'
 ;
 
 // Blocks
 @import
-  'blocks/coming_soon'
+  'blocks/coming_soon',
+  'blocks/buttons'
 ;
 
 // Vendors

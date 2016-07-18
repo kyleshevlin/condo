@@ -19,12 +19,12 @@ $shevy: (
 );
 
 // Colors
+$c-brand: #33a1cc;
 $c-black: #0a0200;
 $c-dark-gray: #2b2b2b;
-$c-light-gray: lighten($c-dark-gray, 45%);
 $c-white: #f7f7f7;
-$c-brand: #33a1cc;
 $c-dark-brand: darken($c-brand, 30%);
+$c-light-blue: lighten(desaturate($c-brand, 50%), 35%);
 
 // Font Stacks
 $f-serif: serif;
@@ -39,5 +39,6 @@ $f-content: $f-droid;
 
 // Z-indexes
 $z-indexes: (
-  'default': 'auto'
+  'default': 'auto',
+  'header-heading-wrap': 2
 );

@@ -3,9 +3,13 @@
 //////////////////////////////
 
 .container {
-  @include container(85%, 'center');
+  @include container(85%);
 
   @include bp(bravo) {
-    @include container(65%, 'center');
+    @include container(65%);
+  }
+
+  @include bp(charlie) {
+    @include container(55%);
   }
 }

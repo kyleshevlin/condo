@@ -2,6 +2,16 @@
 // Functions
 //////////////////////////////
 
+// Black with Alpha
+@function black($alpha: 1) {
+  @return rgba(#000, $alpha);
+}
+
+// White with Alpha
+@function white($alpha: 1) {
+  @return rgba(#fff, $alpha);
+}
+
 // Z-index function
 @function zi($layer: 'default') {
   @if not map-has-key($z-indexes, $layer) {

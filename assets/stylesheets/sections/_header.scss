@@ -3,9 +3,60 @@
 //////////////////////////////
 
 .header {
-  padding: bs(2) 0;
+  background: $c-dark-brand;
+  color: $c-white;
+  text-align: center;
+  padding: bs(4) 0;
+  margin-bottom: bs(2);
+  position: relative;
+  overflow: hidden;
+
+  @include bp(alpha) {
+    padding: bs(6) 0;
+  }
+
+  &-background {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s ease;
+
+    @include bp(alpha) {
+      display: block;
+    }
+
+    .is-trianglified & {
+      opacity: 1;
+    }
+
+    canvas {
+      width: 100%;
+    }
+  }
+
+  &-heading-wrap {
+    position: relative;
+    z-index: zi('header-heading-wrap');
+    opacity: 0;
+    transition: opacity .5s ease;
+
+    .is-trianglified & {
+      opacity: 1;
+    }
+  }
 
   &-heading {
-    margin-bottom: 0;
+    font-size: 65px;
+    font-weight: 700;
+    text-shadow: 0 2px 15px black(.5);
+    text-transform: uppercase;
+    margin-bottom: bs(.5);
+  }
+
+  &-subheading {
+    text-shadow: 0 0 15px black(.5);
   }
 }

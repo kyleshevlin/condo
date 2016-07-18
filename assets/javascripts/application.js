@@ -1,9 +1,22 @@
 // AppName Object
-var AppName = {
+var Condo = {
 
   // Init Function
   init: function() {
-    console.log('init');
+    var pattern = Trianglify({
+      width: 1200,
+      height: 1200,
+      x_colors: ['#144052', '#33a1cc', '#144052'],
+      y_colors: ['#144052', '#000000']
+    });
+
+    var canvas = pattern.canvas();
+    var background = document.querySelector('.js-header-background');
+
+    background.appendChild(canvas);
+    setTimeout(function() {
+      document.body.classList = 'is-trianglified';
+    }, 350);
   }
 };
 
@@ -16,4 +29,4 @@ function ready(fn) {
   }
 }
 
-ready(AppName.init());
+ready(Condo.init());

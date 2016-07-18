@@ -73,6 +73,7 @@ module.exports = function(grunt) {
         src: [
           // Declare Scripts in Order you want them concatenated
           'vendor/assets/javascripts/*.js',
+          'bower_components/trianglify/dist/trianglify.min.js',
           'assets/javascripts/application.js'
         ],
         dest: 'build/application.js',
