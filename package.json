@@ -1,6 +1,6 @@
 {
   "title": "Condo",
-  "name": "condo",
+  "name": "condo-grids",
   "version": "1.0.2",
   "description": "A tiny Sass grid library.",
   "repository": {
